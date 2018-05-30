@@ -1,0 +1,124 @@
+Last login: Wed May  9 20:17:54 on ttys001
+Sanazs-MBP:~ sanaz$ mysql -h localhost -u root -p
+Enter password: 
+Welcome to the MySQL monitor.  Commands end with ; or \g.
+Your MySQL connection id is 10
+Server version: 8.0.11 MySQL Community Server - GPL
+
+Copyright (c) 2000, 2018, Oracle and/or its affiliates. All rights reserved.
+
+Oracle is a registered trademark of Oracle Corporation and/or its
+affiliates. Other names may be trademarks of their respective
+owners.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+mysql> show databases;
++--------------------+
+| Database           |
++--------------------+
+| information_schema |
+| mysql              |
+| MYSQLDEV           |
+| performance_schema |
+| STUDENTDB          |
+| sys                |
++--------------------+
+6 rows in set (0.00 sec)
+
+mysql> USE STUDENTDB;
+Reading table information for completion of table and column names
+You can turn off this feature to get a quicker startup with -A
+
+Database changed
+mysql> SHOW tables;
++---------------------+
+| Tables_in_studentdb |
++---------------------+
+| grade_event         |
+| score               |
+| student             |
+| TEST                |
++---------------------+
+4 rows in set (0.00 sec)
+
+mysql> DESCRIBE student;
++------------+------------------+------+-----+---------+----------------+
+| Field      | Type             | Null | Key | Default | Extra          |
++------------+------------------+------+-----+---------+----------------+
+| name       | varchar(20)      | NO   |     | NULL    |                |
+| GENDER     | enum('F','M')    | NO   |     | NULL    |                |
+| student_id | int(10) unsigned | NO   | PRI | NULL    | auto_increment |
++------------+------------------+------+-----+---------+----------------+
+3 rows in set (0.00 sec)
+
+mysql> DESCRIBE score;
++------------+------------------+------+-----+---------+-------+
+| Field      | Type             | Null | Key | Default | Extra |
++------------+------------------+------+-----+---------+-------+
+| student_id | int(10) unsigned | NO   | PRI | NULL    |       |
+| event_id   | int(10) unsigned | NO   | PRI | NULL    |       |
+| score      | int(11)          | NO   |     | NULL    |       |
++------------+------------------+------+-----+---------+-------+
+3 rows in set (0.00 sec)
+
+mysql> DESCRIBE grade_event;
++----------+------------------+------+-----+---------+----------------+
+| Field    | Type             | Null | Key | Default | Extra          |
++----------+------------------+------+-----+---------+----------------+
+| date     | date             | NO   |     | NULL    |                |
+| category | enum('T','Q')    | NO   |     | NULL    |                |
+| event_id | int(10) unsigned | NO   | PRI | NULL    | auto_increment |
++----------+------------------+------+-----+---------+----------------+
+3 rows in set (0.00 sec)
+
+mysql> SELECT s.student_id AS studentID,
+    -> s.name AS Name,
+    -> SUM(sc.score) AS SumScore,
+    -> AVG(sc.score) AS AverageScore,
+    -> MIN(sc.score) AS MinScore,
+    -> MAX(sc.score) AS MaxScore
+    -> FROM student AS s
+    -> JOIN score AS sc
+    -> ON s.student_id = sc.student_id
+    -> GROUP BY sc.student_id;
++-----------+-----------+----------+--------------+----------+----------+
+| studentID | Name      | SumScore | AverageScore | MinScore | MaxScore |
++-----------+-----------+----------+--------------+----------+----------+
+|         1 | Megan     |      240 |      48.0000 |       15 |      100 |
+|         2 | Joseph    |      202 |      40.4000 |        7 |       91 |
+|         3 | Kyle      |      224 |      37.3333 |       11 |       94 |
+|         4 | Katie     |      192 |      38.4000 |       13 |       74 |
+|         5 | Abby      |      257 |      42.8333 |       13 |       97 |
+|         6 | Nathan    |      230 |      38.3333 |        9 |       89 |
+|         7 | Liesl     |      228 |      38.0000 |       14 |       88 |
+|         8 | Ian       |      192 |      32.0000 |        8 |       75 |
+|         9 | Colin     |      216 |      36.0000 |       11 |       83 |
+|        10 | Peter     |      198 |      33.0000 |       12 |       72 |
+|        11 | Michael   |      239 |      39.8333 |       15 |       98 |
+|        12 | Thomas    |      211 |      35.1667 |        8 |       77 |
+|        13 | Devri     |      101 |      25.2500 |        8 |       67 |
+|        14 | Ben       |      201 |      33.5000 |       11 |       77 |
+|        15 | Aubrey    |      195 |      32.5000 |        9 |       75 |
+|        16 | Rebecca   |      220 |      36.6667 |        9 |       98 |
+|        17 | Will      |      206 |      41.2000 |        9 |       94 |
+|        18 | Max       |      248 |      41.3333 |        9 |       96 |
+|        19 | Rianne    |      206 |      34.3333 |        9 |       79 |
+|        20 | Avery     |      178 |      35.6000 |        9 |       76 |
+|        21 | Lauren    |      219 |      36.5000 |       12 |       91 |
+|        22 | Becca     |      236 |      39.3333 |       10 |       95 |
+|        23 | Gregory   |      142 |      28.4000 |       13 |       81 |
+|        24 | Sarah     |      172 |      34.4000 |       11 |       68 |
+|        25 | Robbie    |      217 |      36.1667 |       10 |       85 |
+|        26 | Keaton    |      228 |      38.0000 |        8 |       91 |
+|        27 | Carter    |      183 |      45.7500 |        8 |       90 |
+|        28 | Teddy     |      210 |      35.0000 |       13 |       77 |
+|        29 | Gabrielle |      183 |      36.6000 |       16 |       66 |
+|        30 | Grace     |      187 |      37.4000 |       11 |       79 |
+|        31 | Emily     |      215 |      35.8333 |        9 |       81 |
++-----------+-----------+----------+--------------+----------+----------+
+31 rows in set (0.00 sec)
+
+mysql> \q
+Bye
+Sanazs-MBP:~ sanaz$ 

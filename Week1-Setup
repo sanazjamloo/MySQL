@@ -1,0 +1,194 @@
+Last login: Thu May  3 11:26:52 on ttys002
+Sanazs-MBP:~ sanaz$ cd downloads
+Sanazs-MBP:downloads sanaz$ mysql -h localhost -u root -p
+Enter password: 
+Welcome to the MySQL monitor.  Commands end with ; or \g.
+Your MySQL connection id is 20
+Server version: 8.0.11 MySQL Community Server - GPL
+
+Copyright (c) 2000, 2018, Oracle and/or its affiliates. All rights reserved.
+
+Oracle is a registered trademark of Oracle Corporation and/or its
+affiliates. Other names may be trademarks of their respective
+owners.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+mysql> CREATE DATABASE MYSQLDEV;
+Query OK, 1 row affected (0.03 sec)
+
+mysql> SHOW CREATE DATABASE MYSQLDEV;
++----------+-------------------------------------------------------------------------------------------------+
+| Database | Create Database                                                                                 |
++----------+-------------------------------------------------------------------------------------------------+
+| MYSQLDEV | CREATE DATABASE `MYSQLDEV` /*!40100 DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci */ |
++----------+-------------------------------------------------------------------------------------------------+
+1 row in set (0.00 sec)
+
+mysql> USE MYSQLDEV;
+Database changed
+mysql> SHOW TABLES;
+Empty set (0.01 sec)
+
+mysql> CREATE TABLE Address (Address_ID INT, Address_Line1 VARCHAR(100), Address_Line2 VARCHAR(100)mysql> CREATE TABLE Address (Address_ID INT, Address_Line1 VARCHAR(100), Address_Line2 VARCHAR(100),City VARCHAR(100), State_CD VARCHAR(2));
+Query OK, 0 rows affected (0.09 sec)
+
+mysql> SHOW TABLES;
++--------------------+
+| Tables_in_mysqldev |
++--------------------+
+| Address            |
++--------------------+
+1 row in set (0.00 sec)
+
+mysql> DESCRIBE Address;
++---------------+--------------+------+-----+---------+-------+
+| Field         | Type         | Null | Key | Default | Extra |
++---------------+--------------+------+-----+---------+-------+
+| Address_ID    | int(11)      | YES  |     | NULL    |       |
+| Address_Line1 | varchar(100) | YES  |     | NULL    |       |
+| Address_Line2 | varchar(100) | YES  |     | NULL    |       |
+| City          | varchar(100) | YES  |     | NULL    |       |
+| State_CD      | varchar(2)   | YES  |     | NULL    |       |
++---------------+--------------+------+-----+---------+-------+
+5 rows in set (0.01 sec)
+
+mysql> ALTER TABLE ADDRESS ADD CONSTRAINT Address_PK PRIMARY KEY (Address_ID);
+Query OK, 0 rows affected (0.09 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> DESCRIBE Address;
++---------------+--------------+------+-----+---------+-------+
+| Field         | Type         | Null | Key | Default | Extra |
++---------------+--------------+------+-----+---------+-------+
+| Address_ID    | int(11)      | NO   | PRI | NULL    |       |
+| Address_Line1 | varchar(100) | YES  |     | NULL    |       |
+| Address_Line2 | varchar(100) | YES  |     | NULL    |       |
+| City          | varchar(100) | YES  |     | NULL    |       |
+| State_CD      | varchar(2)   | YES  |     | NULL    |       |
++---------------+--------------+------+-----+---------+-------+
+5 rows in set (0.00 sec)
+
+mysql> CREATE TABLE Orders (Order_ID INT, Product_Code VARCHAR(100), Prodcut_Description VARCHAR(100), Transaction_Date DATE, CONSTRAINT Order_PK PRIMARY KEY (Order_ID));
+Query OK, 0 rows affected (0.03 sec)
+
+mysql> SHOW TABLES;
++--------------------+
+| Tables_in_mysqldev |
++--------------------+
+| ADDRESS            |
+| Orders             |
++--------------------+
+2 rows in set (0.00 sec)
+
+mysql> DESCRIBE Orders;
++---------------------+--------------+------+-----+---------+-------+
+| Field               | Type         | Null | Key | Default | Extra |
++---------------------+--------------+------+-----+---------+-------+
+| Order_ID            | int(11)      | NO   | PRI | NULL    |       |
+| Product_Code        | varchar(100) | YES  |     | NULL    |       |
+| Prodcut_Description | varchar(100) | YES  |     | NULL    |       |
+| Transaction_Date    | date         | YES  |     | NULL    |       |
++---------------------+--------------+------+-----+---------+-------+
+4 rows in set (0.00 sec)
+
+mysql> CREATE TABLE Customer (Customer_ID INT, First_Name VARCHAR(100), Last_Name VARCHAR(100), Email VARCHAR(100), Phone VARCHAR(100), Date_Purchased DATE, Address_ID INT, Order_ID INT, CONSTRAINT Customer_PK PRIMARY KEY (Customer_ID));
+Query OK, 0 rows affected (0.07 sec)
+
+mysql> SHOW TABLES;
++--------------------+
+| Tables_in_mysqldev |
++--------------------+
+| ADDRESS            |
+| Customer           |
+| Orders             |
++--------------------+
+3 rows in set (0.00 sec)
+
+mysql> DESCRIBE Customer;
++----------------+--------------+------+-----+---------+-------+
+| Field          | Type         | Null | Key | Default | Extra |
++----------------+--------------+------+-----+---------+-------+
+| Customer_ID    | int(11)      | NO   | PRI | NULL    |       |
+| First_Name     | varchar(100) | YES  |     | NULL    |       |
+| Last_Name      | varchar(100) | YES  |     | NULL    |       |
+| Email          | varchar(100) | YES  |     | NULL    |       |
+| Phone          | varchar(100) | YES  |     | NULL    |       |
+| Date_Purchased | date         | YES  |     | NULL    |       |
+| Address_ID     | int(11)      | YES  |     | NULL    |       |
+| Order_ID       | int(11)      | YES  |     | NULL    |       |
++----------------+--------------+------+-----+---------+-------+
+8 rows in set (0.00 sec)
+
+mysql> ALTER TABLE Address ADD CONSTRAINT Address_FK FOREIGN KEY (Address_Line1) REFERENCES Address(Address_ID) ON DELETE NO ACTION ON UPDATE ACTION;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'ACTION' at line 1
+mysql> ALTER TABLE Address ADD CONSTRAINT Address_FK FOREIGN KEY (Address_Line1) REFERENCES Address(Address_ID);
+ERROR 1215 (HY000): Cannot add foreign key constraint
+mysql> ALTER TABLE Address ADD CONSTRAINT Address_FK FOREIGN KEY (City) REFERENCES Address(Address_ID);
+ERROR 1215 (HY000): Cannot add foreign key constraint
+mysql> ALTER TABLE Address MODIFY COLUMN Address_ID INT(11) UNSIGNED NOT NULL;
+Query OK, 0 rows affected (0.06 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> ALTER TABLE Address ADD CONSTRAINT Address_FK FOREIGN KEY (City) REFERENCES Address(Address_ID);
+ERROR 1215 (HY000): Cannot add foreign key constraint
+mysql> ALTER TABLE Address ADD CONSTRAINT Address_ID_FK FOREIGN KEY (City) REFERENCES Address(Address_ID);
+ERROR 1215 (HY000): Cannot add foreign key constraint
+mysql> ALTER TABLE Address ADD CONSTRAINT Address_ID_FK FOREIGN KEY (City) REFERENCES Address;
+ERROR 1239 (42000): Incorrect foreign key definition for 'Address_ID_FK': Key reference and table reference don't match
+mysql> ALTER TABLE Address ADD CONSTRAINT Address_FK FOREIGN KEY (City) REFERENCES Address_ID;
+ERROR 1239 (42000): Incorrect foreign key definition for 'Address_FK': Key reference and table reference don't match
+mysql> ALTER TABLE Address ADD CONSTRAINT Address_FK FOREIGN KEY (City) REFERENCES Address(Address_ID);
+ERROR 1215 (HY000): Cannot add foreign key constraint
+mysql> ALTER TABLE Address ADD CONSTRAINT Address_FK FOREIGN KEY (State_CD) REFERENCES Address(Address_ID);
+ERROR 1215 (HY000): Cannot add foreign key constraint
+mysql> ALTER TABLE Address ADD CONSTRAINT Address_FK FOREIGN KEY (State_CD) REFERENCES Address(ID);
+ERROR 1215 (HY000): Cannot add foreign key constraint
+mysql> ALTER TABLE Address ADD CONSTRAINT FK_City FOREING KEY (City) REFERENCES Address(ID);
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'FOREING KEY (City) REFERENCES Address(ID)' at line 1
+mysql> ALTER TABLE Address ADD CONSTRAINT FK_City FOREIGN  KEY (City) REFERENCES Address(ID);
+ERROR 1215 (HY000): Cannot add foreign key constraint
+mysql> ALTER TABLE Address ADD CONSTRAINT FK_City FOREIGN  KEY (City) REFERENCES Address(Address_ID);
+ERROR 1215 (HY000): Cannot add foreign key constraint
+mysql> ALTER TABLE Customer ADD CONSTRAINT customer_email UNIQUE(Email);
+Query OK, 0 rows affected (0.04 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> DESCRIBE Customer;
++----------------+--------------+------+-----+---------+-------+
+| Field          | Type         | Null | Key | Default | Extra |
++----------------+--------------+------+-----+---------+-------+
+| Customer_ID    | int(11)      | NO   | PRI | NULL    |       |
+| First_Name     | varchar(100) | YES  |     | NULL    |       |
+| Last_Name      | varchar(100) | YES  |     | NULL    |       |
+| Email          | varchar(100) | YES  | UNI | NULL    |       |
+| Phone          | varchar(100) | YES  |     | NULL    |       |
+| Date_Purchased | date         | YES  |     | NULL    |       |
+| Address_ID     | int(11)      | YES  |     | NULL    |       |
+| Order_ID       | int(11)      | YES  |     | NULL    |       |
++----------------+--------------+------+-----+---------+-------+
+8 rows in set (0.01 sec)
+
+mysql> ALTER TABLE Address ADD CONSTRAINT Address_Address_ID_FK FOREIGN  KEY (City) REFERENCES Address(Address_ID);
+ERROR 1215 (HY000): Cannot add foreign key constraint
+mysql> ALTER TABLE Address MODIFY COLUMN City VARCHAR(100) NOT NULL;
+Query OK, 0 rows affected (0.11 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> ALTER TABLE Address ADD CONSTRAINT Address_Address_ID_FK FOREIGN  KEY (City) REFERENCES Address(Address_ID);
+ERROR 1215 (HY000): Cannot add foreign key constraint
+mysql> DESCRIBE Address;
++---------------+------------------+------+-----+---------+-------+
+| Field         | Type             | Null | Key | Default | Extra |
++---------------+------------------+------+-----+---------+-------+
+| Address_ID    | int(11) unsigned | NO   | PRI | NULL    |       |
+| Address_Line1 | varchar(100)     | YES  |     | NULL    |       |
+| Address_Line2 | varchar(100)     | YES  |     | NULL    |       |
+| City          | varchar(100)     | NO   |     | NULL    |       |
+| State_CD      | varchar(2)       | YES  |     | NULL    |       |
++---------------+------------------+------+-----+---------+-------+
+5 rows in set (0.00 sec)
+
+
+
+
