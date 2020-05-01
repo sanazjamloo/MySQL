@@ -24,13 +24,17 @@ artist, album
 FROM albums LIMIT 10
 
 -- I want to see a list of ARTISTs in the ALBUMS table.
+SELECT artist
+FROM albums
 
 -- I want to see a DISTINCT list of ARTISTS in the ALBUMS table.
+SELECT COUNT (DISTINCT artist)
+FROM albums
 
 -- I want to see a list of ALBUMs in the ALBUMS table, sorted from A-Z.
-SELECT ALBUM
+SELECT album
 FROM albums
-ORDER BY ALBUM ASC
+ORDER BY album ASC
 -- I want to see a list of ALBUMS their GENRE, sorted by highest to lowest price.
 SELECT album, genre, org_price
 FROM ALBUMS
