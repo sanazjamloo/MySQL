@@ -35,16 +35,18 @@ FROM albums
 SELECT album
 FROM albums
 ORDER BY album ASC
+
 -- I want to see a list of ALBUMS their GENRE, sorted by highest to lowest price.
 SELECT album, genre, org_price
-FROM ALBUMS
+FROM albums
 ORDER BY org_price DESC
 
 
 -- I want a list of ALBUMS and the profit realized from selling each ALBUM.
 SELECT
 album, (CAST(market_value AS MONEY)- org_price) AS profit
-FROM ALBUMS
+FROM albums
+
 -- I want to order the list of ALBUMS by lowest profit album to highest profit ALBUM.
 SELECT album, (CAST(market_value AS MONEY)- org_price) AS profit
 FROM albums
@@ -66,7 +68,9 @@ ORDER BY profit ASC
 --QUESTIONS
 
 	-- Question 1: Select 300 Rows from the SALES table
-
+SELECT *
+FROM sales
+LIMIT 300
 
 	-- Question 2: Fix the below code
 
@@ -74,13 +78,19 @@ ORDER BY profit ASC
 		item
 		, store
 		, county
-		, total,
+		, total
 		FROM sales
 		LIMIT 100
 
 	/*Question 3: Show me a list of Store_#'s, their name, and status.
 	Order them by name from 'A-Z'. *Hint - use the STORES table */
-
+		SELECT
+		store,
+		name,
+		store_status
+		FROM stores
+		ORDER BY name ASC
+		
 
 	/*Question 4: Show me a list of items, their product category
 	and bottle price with a 11% tax rate added on.
