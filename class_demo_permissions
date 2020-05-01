@@ -1,0 +1,788 @@
+Last login: Tue May 29 20:21:11 on ttys000
+Sanazs-MBP:~ sanaz$ 
+  [Restored Jun 1, 2018 at 6:53:25 PM]
+Last login: Wed May 30 18:58:53 on ttys000
+Sanazs-MacBook-Pro:~ sanaz$ mysql -h localhost -u root -p
+-bash: mysql: command not found
+Sanazs-MacBook-Pro:~ sanaz$ cd /usr/local
+Sanazs-MacBook-Pro:local sanaz$ ls
+Cellar				etc				mysql-8.0.11-macos10.13-x86_64	var
+Frameworks			include				opt
+Homebrew			lib				sbin
+bin				mysql				share
+Sanazs-MacBook-Pro:local sanaz$ cd mysl
+-bash: cd: mysl: No such file or directory
+Sanazs-MacBook-Pro:local sanaz$ cd mysql
+Sanazs-MacBook-Pro:mysql sanaz$ ls
+LICENSE		bin		docs		keyring		man		support-files
+README		data		include		lib		share
+Sanazs-MacBook-Pro:mysql sanaz$ cd bin
+Sanazs-MacBook-Pro:bin sanaz$ ls
+ibd2sdi				mysql_config			mysqld				mysqlslap
+innochecksum			mysql_config_editor		mysqld-debug			mysqlxtest
+lz4_decompress			mysql_secure_installation	mysqld_multi			perror
+my_print_defaults		mysql_ssl_rsa_setup		mysqld_safe			resolve_stack_dump
+myisam_ftdump			mysql_tzinfo_to_sql		mysqldump			resolveip
+myisamchk			mysql_upgrade			mysqldumpslow			zlib_decompress
+myisamlog			mysqladmin			mysqlimport
+myisampack			mysqlbinlog			mysqlpump
+mysql				mysqlcheck			mysqlshow
+Sanazs-MacBook-Pro:bin sanaz$ mysql
+-bash: mysql: command not found
+Sanazs-MacBook-Pro:bin sanaz$ ./mysql
+ERROR 1045 (28000): Access denied for user 'sanaz'@'localhost' (using password: NO)
+Sanazs-MacBook-Pro:bin sanaz$ pwd
+/usr/local/mysql/bin
+Sanazs-MacBook-Pro:bin sanaz$ eng
+-bash: eng: command not found
+Sanazs-MacBook-Pro:bin sanaz$ env
+TERM_PROGRAM=Apple_Terminal
+SHELL=/bin/bash
+TERM=xterm-256color
+TMPDIR=/var/folders/32/3mlyxgs95z78k4fjtv38hkvw0000gn/T/
+Apple_PubSub_Socket_Render=/private/tmp/com.apple.launchd.3H38mQaiND/Render
+TERM_PROGRAM_VERSION=404
+TERM_SESSION_ID=F936ACF0-3A00-48FA-B901-176B60121933
+USER=sanaz
+SSH_AUTH_SOCK=/private/tmp/com.apple.launchd.cMM0bwKaH9/Listeners
+PATH=/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin
+PWD=/usr/local/mysql/bin
+LANG=en_US.UTF-8
+XPC_FLAGS=0x0
+XPC_SERVICE_NAME=0
+SHLVL=1
+HOME=/Users/sanaz
+LOGNAME=sanaz
+_=/usr/bin/env
+OLDPWD=/usr/local/mysql
+Sanazs-MacBook-Pro:bin sanaz$ csh
+[Sanazs-MacBook-Pro:local/mysql/bin] sanaz% 
+[Sanazs-MacBook-Pro:local/mysql/bin] sanaz% 
+[Sanazs-MacBook-Pro:local/mysql/bin] sanaz% setenv PATH=$PATH;/usr/local/mysql/bin
+setenv: Variable name must contain alphanumeric characters.
+/usr/local/mysql/bin: Permission denied.
+[Sanazs-MacBook-Pro:local/mysql/bin] sanaz% pwd
+/usr/local/mysql/bin
+[Sanazs-MacBook-Pro:local/mysql/bin] sanaz% clear
+
+[Sanazs-MacBook-Pro:local/mysql/bin] sanaz% ls
+ibd2sdi				mysql_config			mysqld				mysqlslap
+innochecksum			mysql_config_editor		mysqld-debug			mysqlxtest
+lz4_decompress			mysql_secure_installation	mysqld_multi			perror
+my_print_defaults		mysql_ssl_rsa_setup		mysqld_safe			resolve_stack_dump
+myisam_ftdump			mysql_tzinfo_to_sql		mysqldump			resolveip
+myisamchk			mysql_upgrade			mysqldumpslow			zlib_decompress
+myisamlog			mysqladmin			mysqlimport
+myisampack			mysqlbinlog			mysqlpump
+mysql				mysqlcheck			mysqlshow
+[Sanazs-MacBook-Pro:local/mysql/bin] sanaz% ./mysql -h localhost -u root -p
+Enter password: 
+Welcome to the MySQL monitor.  Commands end with ; or \g.
+Your MySQL connection id is 9
+Server version: 8.0.11 MySQL Community Server - GPL
+
+Copyright (c) 2000, 2018, Oracle and/or its affiliates. All rights reserved.
+
+Oracle is a registered trademark of Oracle Corporation and/or its
+affiliates. Other names may be trademarks of their respective
+owners.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+mysql> exit
+Bye
+[Sanazs-MacBook-Pro:local/mysql/bin] sanaz% pwd
+/usr/local/mysql/bin
+[Sanazs-MacBook-Pro:local/mysql/bin] sanaz% 
+[Sanazs-MacBook-Pro:local/mysql/bin] sanaz% 
+[Sanazs-MacBook-Pro:local/mysql/bin] sanaz% exit
+exit
+Sanazs-MacBook-Pro:bin sanaz$ pwd
+/usr/local/mysql/bin
+Sanazs-MacBook-Pro:bin sanaz$ sanaz% ./mysql -h localhost -u root -p
+-bash: sanaz%: command not found
+Sanazs-MacBook-Pro:bin sanaz$ ./mysql -h localhost -u root -p
+Enter password: 
+Welcome to the MySQL monitor.  Commands end with ; or \g.
+Your MySQL connection id is 10
+Server version: 8.0.11 MySQL Community Server - GPL
+
+Copyright (c) 2000, 2018, Oracle and/or its affiliates. All rights reserved.
+
+Oracle is a registered trademark of Oracle Corporation and/or its
+affiliates. Other names may be trademarks of their respective
+owners.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+mysql> create database studentdb;
+Query OK, 1 row affected (0.12 sec)
+
+mysql> show databases;
++--------------------+
+| Database           |
++--------------------+
+| information_schema |
+| mysql              |
+| performance_schema |
+| studentdb          |
+| sys                |
++--------------------+
+5 rows in set (0.03 sec)
+
+mysql> use studentdb;
+Database changed
+mysql> source mysqlschema.sql;
+ERROR: 
+Failed to open file 'mysqlschema.sql', error: 2
+mysql> exit
+Bye
+Sanazs-MacBook-Pro:bin sanaz$ ls
+ibd2sdi				mysql_config			mysqld				mysqlslap
+innochecksum			mysql_config_editor		mysqld-debug			mysqlxtest
+lz4_decompress			mysql_secure_installation	mysqld_multi			perror
+my_print_defaults		mysql_ssl_rsa_setup		mysqld_safe			resolve_stack_dump
+myisam_ftdump			mysql_tzinfo_to_sql		mysqldump			resolveip
+myisamchk			mysql_upgrade			mysqldumpslow			zlib_decompress
+myisamlog			mysqladmin			mysqlimport
+myisampack			mysqlbinlog			mysqlpump
+mysql				mysqlcheck			mysqlshow
+Sanazs-MacBook-Pro:bin sanaz$ pwd
+/usr/local/mysql/bin
+Sanazs-MacBook-Pro:bin sanaz$ cd
+Sanazs-MacBook-Pro:~ sanaz$ pwd
+/Users/sanaz
+Sanazs-MacBook-Pro:~ sanaz$ cd Downloads/
+Sanazs-MacBook-Pro:Downloads sanaz$ ls
+39836840061-757734833-ticket.pdf			NewTestOOPCalculator.java
+Atom.app						atom-mac.zip
+Eclipse Installer.app					calendar.ics
+Homework5 (1).pdf					eclipse-inst-mac64.tar.gz
+Homework5.pdf						googlechrome.dmg
+Homework6.pdf						hiring-engineers-solutions-engineer.zip
+Insalling_JDK_and_Eclipse.pdf				jdk-8u171-macosx-x64.dmg
+Java Programming Assignment Midterm Sample Solution.pdf	mysql-8.0.11-macos10.13-x86_64.dmg
+JavaBeginnersInClass					mysqlschema (1).sql
+JavaBeginnersInClass_FullEclipse_Project.zip		mysqlschema.sql
+JavaBeginners_Lecture_5.pdf				terminalWindow.txt
+JavaBeginners_Lecture_6.pdf				trigger.sql
+JavaBeginners_Lecture_7.pdf				zoomusInstaller.pkg
+Sanazs-MacBook-Pro:Downloads sanaz$ pwd
+/Users/sanaz/Downloads
+Sanazs-MacBook-Pro:Downloads sanaz$ 
+Sanazs-MacBook-Pro:Downloads sanaz$ 
+Sanazs-MacBook-Pro:Downloads sanaz$ ./usr/local/mysql/bin/mysql -h localhost -u root -p
+-bash: ./usr/local/mysql/bin/mysql: No such file or directory
+Sanazs-MacBook-Pro:Downloads sanaz$ /usr/local/mysql/bin/mysql -h localhost -u root -p
+Enter password: 
+Welcome to the MySQL monitor.  Commands end with ; or \g.
+Your MySQL connection id is 11
+Server version: 8.0.11 MySQL Community Server - GPL
+
+Copyright (c) 2000, 2018, Oracle and/or its affiliates. All rights reserved.
+
+Oracle is a registered trademark of Oracle Corporation and/or its
+affiliates. Other names may be trademarks of their respective
+owners.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+mysql> show database;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'database' at line 1
+mysql> show databases;
++--------------------+
+| Database           |
++--------------------+
+| information_schema |
+| mysql              |
+| performance_schema |
+| studentdb          |
+| sys                |
++--------------------+
+5 rows in set (0.00 sec)
+
+mysql> use studentdb;
+Database changed
+mysql> source mysqlschema.sql
+Database changed
+ERROR 1051 (42S02): Unknown table 'studentdb.score'
+ERROR 1051 (42S02): Unknown table 'studentdb.grade_event'
+ERROR 1051 (42S02): Unknown table 'studentdb.student'
+Query OK, 0 rows affected, 1 warning (0.00 sec)
+
+Query OK, 0 rows affected (0.09 sec)
+
+Query OK, 0 rows affected, 1 warning (0.00 sec)
+
+Query OK, 0 rows affected (0.01 sec)
+
+Query OK, 0 rows affected, 1 warning (0.00 sec)
+
+Query OK, 0 rows affected (0.01 sec)
+
+Query OK, 0 rows affected (0.00 sec)
+
+Query OK, 1 row affected (0.01 sec)
+
+Query OK, 1 row affected (0.00 sec)
+
+Query OK, 1 row affected (0.00 sec)
+
+Query OK, 1 row affected (0.00 sec)
+
+Query OK, 1 row affected (0.00 sec)
+
+Query OK, 1 row affected (0.00 sec)
+
+Query OK, 1 row affected (0.00 sec)
+
+Query OK, 1 row affected (0.00 sec)
+
+Query OK, 1 row affected (0.00 sec)
+
+Query OK, 1 row affected (0.00 sec)
+
+Query OK, 1 row affected (0.00 sec)
+
+Query OK, 1 row affected (0.00 sec)
+
+Query OK, 1 row affected (0.00 sec)
+
+Query OK, 1 row affected (0.00 sec)
+
+Query OK, 1 row affected (0.00 sec)
+
+Query OK, 1 row affected (0.00 sec)
+
+Query OK, 1 row affected (0.00 sec)
+
+Query OK, 1 row affected (0.00 sec)
+
+Query OK, 1 row affected (0.00 sec)
+
+Query OK, 1 row affected (0.01 sec)
+
+Query OK, 1 row affected (0.00 sec)
+
+Query OK, 1 row affected (0.00 sec)
+
+Query OK, 1 row affected (0.00 sec)
+
+Query OK, 1 row affected (0.00 sec)
+
+Query OK, 1 row affected (0.00 sec)
+
+Query OK, 1 row affected (0.00 sec)
+
+Query OK, 1 row affected (0.00 sec)
+
+Query OK, 1 row affected (0.00 sec)
+
+Query OK, 1 row affected (0.00 sec)
+
+Query OK, 1 row affected (0.00 sec)
+
+Query OK, 1 row affected (0.00 sec)
+
+Query OK, 0 rows affected (0.00 sec)
+
+Query OK, 1 row affected (0.00 sec)
+
+Query OK, 1 row affected (0.00 sec)
+
+Query OK, 1 row affected (0.00 sec)
+
+Query OK, 1 row affected (0.00 sec)
+
+Query OK, 1 row affected (0.00 sec)
+
+Query OK, 1 row affected (0.01 sec)
+
+Query OK, 0 rows affected (0.00 sec)
+
+Query OK, 1 row affected (0.00 sec)
+
+Query OK, 1 row affected (0.00 sec)
+
+Query OK, 1 row affected (0.00 sec)
+
+Query OK, 1 row affected (0.00 sec)
+
+Query OK, 1 row affected (0.00 sec)
+
+Query OK, 1 row affected (0.00 sec)
+
+Query OK, 1 row affected (0.00 sec)
+
+Query OK, 1 row affected (0.00 sec)
+
+Query OK, 1 row affected (0.00 sec)
+
+Query OK, 1 row affected (0.00 sec)
+
+Query OK, 1 row affected (0.01 sec)
+
+Query OK, 1 row affected (0.00 sec)
+
+Query OK, 1 row affected (0.00 sec)
+
+Query OK, 1 row affected (0.00 sec)
+
+Query OK, 1 row affected (0.00 sec)
+
+Query OK, 1 row affected (0.00 sec)
+
+Query OK, 1 row affected (0.00 sec)
+
+Query OK, 1 row affected (0.00 sec)
+
+Query OK, 1 row affected (0.00 sec)
+
+Query OK, 1 row affected (0.00 sec)
+
+Query OK, 1 row affected (0.00 sec)
+
+Query OK, 1 row affected (0.00 sec)
+
+Query OK, 1 row affected (0.00 sec)
+
+Query OK, 1 row affected (0.01 sec)
+
+Query OK, 1 row affected (0.00 sec)
+
+Query OK, 1 row affected (0.00 sec)
+
+Query OK, 1 row affected (0.00 sec)
+
+Query OK, 1 row affected (0.00 sec)
+
+Query OK, 1 row affected (0.00 sec)
+
+Query OK, 1 row affected (0.00 sec)
+
+Query OK, 1 row affected (0.00 sec)
+
+Query OK, 1 row affected (0.00 sec)
+
+Query OK, 1 row affected (0.00 sec)
+
+Query OK, 1 row affected (0.00 sec)
+
+Query OK, 1 row affected (0.00 sec)
+
+Query OK, 1 row affected (0.00 sec)
+
+Query OK, 1 row affected (0.00 sec)
+
+Query OK, 1 row affected (0.00 sec)
+
+Query OK, 1 row affected (0.00 sec)
+
+Query OK, 1 row affected (0.00 sec)
+
+Query OK, 1 row affected (0.00 sec)
+
+Query OK, 1 row affected (0.00 sec)
+
+Query OK, 1 row affected (0.00 sec)
+
+Query OK, 1 row affected (0.00 sec)
+
+Query OK, 1 row affected (0.00 sec)
+
+Query OK, 1 row affected (0.00 sec)
+
+Query OK, 1 row affected (0.00 sec)
+
+Query OK, 1 row affected (0.00 sec)
+
+Query OK, 1 row affected (0.00 sec)
+
+Query OK, 1 row affected (0.00 sec)
+
+Query OK, 1 row affected (0.00 sec)
+
+Query OK, 1 row affected (0.00 sec)
+
+Query OK, 1 row affected (0.00 sec)
+
+Query OK, 1 row affected (0.00 sec)
+
+Query OK, 1 row affected (0.01 sec)
+
+Query OK, 1 row affected (0.00 sec)
+
+Query OK, 1 row affected (0.00 sec)
+
+Query OK, 1 row affected (0.00 sec)
+
+Query OK, 1 row affected (0.00 sec)
+
+Query OK, 1 row affected (0.00 sec)
+
+Query OK, 1 row affected (0.00 sec)
+
+Query OK, 1 row affected (0.00 sec)
+
+Query OK, 1 row affected (0.00 sec)
+
+Query OK, 1 row affected (0.00 sec)
+
+Query OK, 1 row affected (0.00 sec)
+
+Query OK, 1 row affected (0.00 sec)
+
+Query OK, 1 row affected (0.00 sec)
+
+Query OK, 1 row affected (0.00 sec)
+
+Query OK, 1 row affected (0.00 sec)
+
+Query OK, 1 row affected (0.00 sec)
+
+Query OK, 1 row affected (0.01 sec)
+
+Query OK, 1 row affected (0.00 sec)
+
+Query OK, 1 row affected (0.00 sec)
+
+Query OK, 1 row affected (0.00 sec)
+
+Query OK, 1 row affected (0.00 sec)
+
+Query OK, 1 row affected (0.00 sec)
+
+Query OK, 1 row affected (0.00 sec)
+
+Query OK, 1 row affected (0.00 sec)
+
+Query OK, 1 row affected (0.00 sec)
+
+Query OK, 1 row affected (0.00 sec)
+
+Query OK, 1 row affected (0.00 sec)
+
+Query OK, 1 row affected (0.00 sec)
+
+Query OK, 1 row affected (0.00 sec)
+
+Query OK, 1 row affected (0.00 sec)
+
+Query OK, 1 row affected (0.00 sec)
+
+Query OK, 1 row affected (0.00 sec)
+
+Query OK, 1 row affected (0.00 sec)
+
+Query OK, 1 row affected (0.00 sec)
+
+Query OK, 1 row affected (0.00 sec)
+
+Query OK, 1 row affected (0.00 sec)
+
+Query OK, 1 row affected (0.01 sec)
+
+Query OK, 1 row affected (0.00 sec)
+
+Query OK, 1 row affected (0.00 sec)
+
+Query OK, 1 row affected (0.00 sec)
+
+Query OK, 1 row affected (0.00 sec)
+
+Query OK, 1 row affected (0.00 sec)
+
+Query OK, 1 row affected (0.00 sec)
+
+Query OK, 1 row affected (0.00 sec)
+
+Query OK, 1 row affected (0.00 sec)
+
+Query OK, 1 row affected (0.00 sec)
+
+Query OK, 1 row affected (0.00 sec)
+
+Query OK, 1 row affected (0.00 sec)
+
+Query OK, 1 row affected (0.00 sec)
+
+Query OK, 1 row affected (0.01 sec)
+
+Query OK, 1 row affected (0.00 sec)
+
+Query OK, 1 row affected (0.00 sec)
+
+Query OK, 1 row affected (0.00 sec)
+
+Query OK, 1 row affected (0.00 sec)
+
+Query OK, 1 row affected (0.00 sec)
+
+Query OK, 1 row affected (0.00 sec)
+
+Query OK, 1 row affected (0.00 sec)
+
+Query OK, 1 row affected (0.00 sec)
+
+Query OK, 1 row affected (0.00 sec)
+
+Query OK, 1 row affected (0.00 sec)
+
+Query OK, 1 row affected (0.00 sec)
+
+Query OK, 1 row affected (0.00 sec)
+
+Query OK, 1 row affected (0.00 sec)
+
+Query OK, 1 row affected (0.00 sec)
+
+Query OK, 1 row affected (0.01 sec)
+
+Query OK, 1 row affected (0.00 sec)
+
+Query OK, 1 row affected (0.00 sec)
+
+Query OK, 1 row affected (0.00 sec)
+
+Query OK, 1 row affected (0.00 sec)
+
+Query OK, 1 row affected (0.00 sec)
+
+Query OK, 1 row affected (0.00 sec)
+
+Query OK, 1 row affected (0.00 sec)
+
+Query OK, 1 row affected (0.00 sec)
+
+Query OK, 1 row affected (0.00 sec)
+
+Query OK, 1 row affected (0.00 sec)
+
+Query OK, 1 row affected (0.00 sec)
+
+Query OK, 1 row affected (0.00 sec)
+
+Query OK, 1 row affected (0.00 sec)
+
+Query OK, 1 row affected (0.00 sec)
+
+Query OK, 1 row affected (0.01 sec)
+
+Query OK, 1 row affected (0.00 sec)
+
+Query OK, 1 row affected (0.00 sec)
+
+Query OK, 1 row affected (0.00 sec)
+
+Query OK, 1 row affected (0.00 sec)
+
+Query OK, 1 row affected (0.00 sec)
+
+Query OK, 1 row affected (0.00 sec)
+
+Query OK, 1 row affected (0.00 sec)
+
+Query OK, 1 row affected (0.00 sec)
+
+Query OK, 1 row affected (0.00 sec)
+
+Query OK, 1 row affected (0.00 sec)
+
+Query OK, 1 row affected (0.01 sec)
+
+Query OK, 1 row affected (0.00 sec)
+
+Query OK, 1 row affected (0.00 sec)
+
+Query OK, 1 row affected (0.00 sec)
+
+Query OK, 1 row affected (0.00 sec)
+
+Query OK, 1 row affected (0.00 sec)
+
+Query OK, 1 row affected (0.00 sec)
+
+Query OK, 1 row affected (0.00 sec)
+
+Query OK, 1 row affected (0.01 sec)
+
+Query OK, 1 row affected (0.00 sec)
+
+Query OK, 1 row affected (0.00 sec)
+
+Query OK, 1 row affected (0.00 sec)
+
+Query OK, 1 row affected (0.00 sec)
+
+Query OK, 1 row affected (0.00 sec)
+
+Query OK, 1 row affected (0.00 sec)
+
+Query OK, 1 row affected (0.00 sec)
+
+Query OK, 1 row affected (0.00 sec)
+
+Query OK, 1 row affected (0.00 sec)
+
+Query OK, 1 row affected (0.00 sec)
+
+Query OK, 1 row affected (0.00 sec)
+
+Query OK, 1 row affected (0.00 sec)
+
+Query OK, 1 row affected (0.00 sec)
+
+Query OK, 1 row affected (0.00 sec)
+
+Query OK, 1 row affected (0.00 sec)
+
+Query OK, 1 row affected (0.00 sec)
+
+Query OK, 1 row affected (0.00 sec)
+
+Query OK, 1 row affected (0.01 sec)
+
+Query OK, 1 row affected (0.00 sec)
+
+Query OK, 1 row affected (0.00 sec)
+
+Query OK, 0 rows affected (0.00 sec)
+
+mysql> exit 
+Bye
+Sanazs-MacBook-Pro:Downloads sanaz$ cd ..
+Sanazs-MacBook-Pro:~ sanaz$ cd documents
+Sanazs-MacBook-Pro:documents sanaz$ ls
+Interview Questions-06.pages	Jobs				UCSCExtension			newBranch-Datadog
+Sanazs-MacBook-Pro:documents sanaz$ cd UCSCExtension/
+Sanazs-MacBook-Pro:UCSCExtension sanaz$ ls
+Java	MySQL
+Sanazs-MacBook-Pro:UCSCExtension sanaz$ cd MySQL/
+Sanazs-MacBook-Pro:MySQL sanaz$ ls
+JoinTables-1			assignment_03_01.sql		assignment_03_03.sql		student-1.sql
+Week1-Setup			assignment_03_02.sql		permissions_procedure.sql
+Sanazs-MacBook-Pro:MySQL sanaz$ /usr/local/mysql/bin/mysql -h localhost -u root -p
+Enter password: 
+Welcome to the MySQL monitor.  Commands end with ; or \g.
+Your MySQL connection id is 12
+Server version: 8.0.11 MySQL Community Server - GPL
+
+Copyright (c) 2000, 2018, Oracle and/or its affiliates. All rights reserved.
+
+Oracle is a registered trademark of Oracle Corporation and/or its
+affiliates. Other names may be trademarks of their respective
+owners.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+mysql> use studentdb;
+Reading table information for completion of table and column names
+You can turn off this feature to get a quicker startup with -A
+
+Database changed
+mysql> source permissions_procedure.sql
+Query OK, 0 rows affected, 1 warning (0.02 sec)
+
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' FROM student ',
+                                  ' WHERE student_id = ?');
+  ' at line 11
+mysql> source permissions_procedure.sql
+Query OK, 0 rows affected, 1 warning (0.01 sec)
+
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' FROM student ',
+                                  ' WHERE student_id = ?'
+    ' at line 11
+mysql> source permissions_procedure.sql
+Query OK, 0 rows affected, 1 warning (0.00 sec)
+
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' FROM student ',
+                                  ' WHERE student_id = ?',
+   ' at line 11
+mysql> source permissions_procedure.sql
+Query OK, 0 rows affected, 1 warning (0.01 sec)
+
+Query OK, 0 rows affected (0.02 sec)
+
+mysql> source permissions_procedure.sql
+Query OK, 0 rows affected, 1 warning (0.01 sec)
+
+ERROR 1304 (42000): PROCEDURE PERMISSIONS_PROCEDURE already exists
+mysql> source permissions_procedure.sql
+Query OK, 0 rows affected, 1 warning (0.01 sec)
+
+ERROR 1304 (42000): PROCEDURE PERMISSIONS_PROCEDURE already exists
+mysql> CALL PERMISSIONS_PROCEDURE(5);
++-------------------------------------------+
+| @v_query                                  |
++-------------------------------------------+
+| DELETE FROM student  WHERE student_id = ? |
++-------------------------------------------+
+1 row in set (0.00 sec)
+
+Query OK, 0 rows affected (0.01 sec)
+
+mysql> select * from student where student_id = 5;
++------+--------+------------+
+| name | GENDER | student_id |
++------+--------+------------+
+| Abby | F      |          5 |
++------+--------+------------+
+1 row in set (0.00 sec)
+
+mysql> insert into student(student_id, name, gender) values(500, 'ziggy', 'M');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> select * from student where student_id = 500;
++-------+--------+------------+
+| name  | GENDER | student_id |
++-------+--------+------------+
+| ziggy | M      |        500 |
++-------+--------+------------+
+1 row in set (0.00 sec)
+
+mysql> CREATE USER Arvin IDENTIFIED BY 'arv';
+Query OK, 0 rows affected (0.10 sec)
+
+mysql> GRANT SELECT ON STUDENT TO Arvin;
+Query OK, 0 rows affected (0.11 sec)
+
+mysql> select * from mysql.user;
++-----------+------------------+-------------+-------------+-------------+-------------+-------------+-----------+-------------+---------------+--------------+-----------+------------+-----------------+------------+------------+--------------+------------+-----------------------+------------------+--------------+-----------------+------------------+------------------+----------------+---------------------+--------------------+------------------+------------+--------------+------------------------+----------+------------+-------------+--------------+---------------+-------------+-----------------+----------------------+-----------------------+------------------------------------------------------------------------+------------------+-----------------------+-------------------+----------------+------------------+----------------+------------------------+---------------------+
+| Host      | User             | Select_priv | Insert_priv | Update_priv | Delete_priv | Create_priv | Drop_priv | Reload_priv | Shutdown_priv | Process_priv | File_priv | Grant_priv | References_priv | Index_priv | Alter_priv | Show_db_priv | Super_priv | Create_tmp_table_priv | Lock_tables_priv | Execute_priv | Repl_slave_priv | Repl_client_priv | Create_view_priv | Show_view_priv | Create_routine_priv | Alter_routine_priv | Create_user_priv | Event_priv | Trigger_priv | Create_tablespace_priv | ssl_type | ssl_cipher | x509_issuer | x509_subject | max_questions | max_updates | max_connections | max_user_connections | plugin                | authentication_string                                                  | password_expired | password_last_changed | password_lifetime | account_locked | Create_role_priv | Drop_role_priv | Password_reuse_history | Password_reuse_time |
++-----------+------------------+-------------+-------------+-------------+-------------+-------------+-----------+-------------+---------------+--------------+-----------+------------+-----------------+------------+------------+--------------+------------+-----------------------+------------------+--------------+-----------------+------------------+------------------+----------------+---------------------+--------------------+------------------+------------+--------------+------------------------+----------+------------+-------------+--------------+---------------+-------------+-----------------+----------------------+-----------------------+------------------------------------------------------------------------+------------------+-----------------------+-------------------+----------------+------------------+----------------+------------------------+---------------------+
+| %         | Arvin            | N           | N           | N           | N           | N           | N         | N           | N             | N            | N         | N          | N               | N          | N          | N            | N          | N                     | N                | N            | N               | N                | N                | N              | N                   | N                  | N                | N          | N            | N                      |          |            |             |              |             0 |           0 |               0 |                    0 | caching_sha2_password | $A$005$4=)D+5=P4>4KF},KnF39kb3wfjuO.DunJfVUlBwS1V9RbPz6XDaOiE2.OQ9 | N                | 2018-06-01 19:42:00   |              NULL | N              | N                | N              |                   NULL |                NULL |
+| localhost | mysql.infoschema | Y           | N           | N           | N           | N           | N         | N           | N             | N            | N         | N          | N               | N          | N          | N            | N          | N                     | N                | N            | N               | N                | N                | N              | N                   | N                  | N                | N          | N            | N                      |          |            |             |              |             0 |           0 |               0 |                    0 | mysql_native_password | *THISISNOTAVALIDPASSWORDTHATCANBEUSEDHERE                              | N                | 2018-05-29 19:39:00   |              NULL | Y              | N                | N              |                   NULL |                NULL |
+| localhost | mysql.session    | N           | N           | N           | N           | N           | N         | N           | N             | N            | N         | N          | N               | N          | N          | N            | Y          | N                     | N                | N            | N               | N                | N                | N              | N                   | N                  | N                | N          | N            | N                      |          |            |             |              |             0 |           0 |               0 |                    0 | mysql_native_password | *THISISNOTAVALIDPASSWORDTHATCANBEUSEDHERE                              | N                | 2018-05-29 19:39:00   |              NULL | Y              | N                | N              |                   NULL |                NULL |
+| localhost | mysql.sys        | N           | N           | N           | N           | N           | N         | N           | N             | N            | N         | N          | N               | N          | N          | N            | N          | N                     | N                | N            | N               | N                | N                | N              | N                   | N                  | N                | N          | N            | N                      |          |            |             |              |             0 |           0 |               0 |                    0 | mysql_native_password | *THISISNOTAVALIDPASSWORDTHATCANBEUSEDHERE                              | N                | 2018-05-29 19:39:00   |              NULL | Y              | N                | N              |                   NULL |                NULL |
+| localhost | root             | Y           | Y           | Y           | Y           | Y           | Y         | Y           | Y             | Y            | Y         | Y          | Y               | Y          | Y          | Y            | Y          | Y                     | Y                | Y            | Y               | Y                | Y                | Y              | Y                   | Y                  | Y                | Y          | Y            | Y                      |          |            |             |              |             0 |           0 |               0 |                    0 | caching_sha2_password | $A$005$bl(-d!C+x-g/x#rXYvK5zFPXcWYLI8BEh3Dl3OL3ws4Wm3r450RvHUwxUu3 | N                | 2018-05-29 19:39:02   |              NULL | N              | Y                | Y              |                   NULL |                NULL |
++-----------+------------------+-------------+-------------+-------------+-------------+-------------+-----------+-------------+---------------+--------------+-----------+------------+-----------------+------------+------------+--------------+------------+-----------------------+------------------+--------------+-----------------+------------------+------------------+----------------+---------------------+--------------------+------------------+------------+--------------+------------------------+----------+------------+-------------+--------------+---------------+-------------+-----------------+----------------------+-----------------------+------------------------------------------------------------------------+------------------+-----------------------+-------------------+----------------+------------------+----------------+------------------------+---------------------+
+5 rows in set (0.00 sec)
+
+mysql> GRANT EXECUTE ON PROCEDURE PERMISSIONS_PROCEDURE TO Arvin;
+Query OK, 0 rows affected (0.09 sec)
+
+mysql> source PERMISSIONS_PROCEDURE.sql
+Query OK, 0 rows affected (0.03 sec)
+
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 1
+mysql> source PERMISSIONS_PROCEDURE.sql
+Query OK, 0 rows affected, 1 warning (0.01 sec)
+
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 1
+mysql> source PERMISSIONS_PROCEDURE.sql
+Query OK, 0 rows affected, 1 warning (0.00 sec)
+
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 1
+mysql> source PERMISSIONS_PROCEDURE.sql
+Query OK, 0 rows affected, 1 warning (0.01 sec)
+
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 1
+mysql> source PERMISSION_PROCEDURE.sql
+Query OK, 0 rows affected, 1 warning (0.01 sec)
+
+Query OK, 0 rows affected (0.10 sec)
+
+mysql> GRANT EXECUTE ON PROCEDURE PERMISSIONS_PROCEDURE TO Arvin;
+Query OK, 0 rows affected (0.11 sec)
+
+mysql> 

@@ -1,0 +1,167 @@
+Last login: Fri Jun  1 18:53:25 on ttys000
+Sanazs-MacBook-Pro:~ sanaz$ /usr/local/mysql/bin/mysql -h localhost -u Arvin -p
+Enter password: 
+Welcome to the MySQL monitor.  Commands end with ; or \g.
+Your MySQL connection id is 13
+Server version: 8.0.11 MySQL Community Server - GPL
+
+Copyright (c) 2000, 2018, Oracle and/or its affiliates. All rights reserved.
+
+Oracle is a registered trademark of Oracle Corporation and/or its
+affiliates. Other names may be trademarks of their respective
+owners.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+mysql> use studentdb;
+Reading table information for completion of table and column names
+You can turn off this feature to get a quicker startup with -A
+
+Database changed
+mysql> show tables;
++---------------------+
+| Tables_in_studentdb |
++---------------------+
+| student             |
++---------------------+
+1 row in set (0.00 sec)
+
+mysql> select * from student;
++-----------+--------+------------+
+| name      | GENDER | student_id |
++-----------+--------+------------+
+| Megan     | F      |          1 |
+| Joseph    | M      |          2 |
+| Kyle      | M      |          3 |
+| Katie     | F      |          4 |
+| Abby      | F      |          5 |
+| Nathan    | M      |          6 |
+| Liesl     | F      |          7 |
+| Ian       | M      |          8 |
+| Colin     | M      |          9 |
+| Peter     | M      |         10 |
+| Michael   | M      |         11 |
+| Thomas    | M      |         12 |
+| Devri     | F      |         13 |
+| Ben       | M      |         14 |
+| Aubrey    | F      |         15 |
+| Rebecca   | F      |         16 |
+| Will      | M      |         17 |
+| Max       | M      |         18 |
+| Rianne    | F      |         19 |
+| Avery     | F      |         20 |
+| Lauren    | F      |         21 |
+| Becca     | F      |         22 |
+| Gregory   | M      |         23 |
+| Sarah     | F      |         24 |
+| Robbie    | M      |         25 |
+| Keaton    | M      |         26 |
+| Carter    | M      |         27 |
+| Teddy     | M      |         28 |
+| Gabrielle | F      |         29 |
+| Grace     | F      |         30 |
+| Emily     | F      |         31 |
+| ziggy     | M      |        500 |
++-----------+--------+------------+
+32 rows in set (0.00 sec)
+
+mysql> DELETE FROM STUDENT WHERE STUDENT_ID = 5;
+ERROR 1142 (42000): DELETE command denied to user 'Arvin'@'localhost' for table 'student'
+mysql> CALL PERMISSIONS_PROCEDURE(500);
++-------------------------------------------+
+| @v_query                                  |
++-------------------------------------------+
+| DELETE FROM student  WHERE student_id = ? |
++-------------------------------------------+
+1 row in set (0.00 sec)
+
+Query OK, 0 rows affected (0.00 sec)
+
+mysql> SELECT * from Student;
++-----------+--------+------------+
+| name      | GENDER | student_id |
++-----------+--------+------------+
+| Megan     | F      |          1 |
+| Joseph    | M      |          2 |
+| Kyle      | M      |          3 |
+| Katie     | F      |          4 |
+| Abby      | F      |          5 |
+| Nathan    | M      |          6 |
+| Liesl     | F      |          7 |
+| Ian       | M      |          8 |
+| Colin     | M      |          9 |
+| Peter     | M      |         10 |
+| Michael   | M      |         11 |
+| Thomas    | M      |         12 |
+| Devri     | F      |         13 |
+| Ben       | M      |         14 |
+| Aubrey    | F      |         15 |
+| Rebecca   | F      |         16 |
+| Will      | M      |         17 |
+| Max       | M      |         18 |
+| Rianne    | F      |         19 |
+| Avery     | F      |         20 |
+| Lauren    | F      |         21 |
+| Becca     | F      |         22 |
+| Gregory   | M      |         23 |
+| Sarah     | F      |         24 |
+| Robbie    | M      |         25 |
+| Keaton    | M      |         26 |
+| Carter    | M      |         27 |
+| Teddy     | M      |         28 |
+| Gabrielle | F      |         29 |
+| Grace     | F      |         30 |
+| Emily     | F      |         31 |
+| ziggy     | M      |        500 |
++-----------+--------+------------+
+32 rows in set (0.00 sec)
+
+mysql> CALL PERMISSIONS_PROCEDURE(500);
++--------------------------------------------+
+| @V_QUERY                                   |
++--------------------------------------------+
+| DELETE  FROM STUDENT  WHERE STUDENT_ID = ? |
++--------------------------------------------+
+1 row in set (0.00 sec)
+
+Query OK, 1 row affected (0.05 sec)
+
+mysql> SELECT * from Student;
++-----------+--------+------------+
+| name      | GENDER | student_id |
++-----------+--------+------------+
+| Megan     | F      |          1 |
+| Joseph    | M      |          2 |
+| Kyle      | M      |          3 |
+| Katie     | F      |          4 |
+| Abby      | F      |          5 |
+| Nathan    | M      |          6 |
+| Liesl     | F      |          7 |
+| Ian       | M      |          8 |
+| Colin     | M      |          9 |
+| Peter     | M      |         10 |
+| Michael   | M      |         11 |
+| Thomas    | M      |         12 |
+| Devri     | F      |         13 |
+| Ben       | M      |         14 |
+| Aubrey    | F      |         15 |
+| Rebecca   | F      |         16 |
+| Will      | M      |         17 |
+| Max       | M      |         18 |
+| Rianne    | F      |         19 |
+| Avery     | F      |         20 |
+| Lauren    | F      |         21 |
+| Becca     | F      |         22 |
+| Gregory   | M      |         23 |
+| Sarah     | F      |         24 |
+| Robbie    | M      |         25 |
+| Keaton    | M      |         26 |
+| Carter    | M      |         27 |
+| Teddy     | M      |         28 |
+| Gabrielle | F      |         29 |
+| Grace     | F      |         30 |
+| Emily     | F      |         31 |
++-----------+--------+------------+
+31 rows in set (0.00 sec)
+
+mysql> 

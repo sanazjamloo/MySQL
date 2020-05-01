@@ -1,0 +1,229 @@
+Last login: Wed Jun  6 23:04:29 on ttys000
+Sanazs-MacBook-Pro:~ sanaz$ /usr/local/mysql/bin/mysql -h localhost -u root -p
+Enter password: 
+Welcome to the MySQL monitor.  Commands end with ; or \g.
+Your MySQL connection id is 8
+Server version: 8.0.11 MySQL Community Server - GPL
+
+Copyright (c) 2000, 2018, Oracle and/or its affiliates. All rights reserved.
+
+Oracle is a registered trademark of Oracle Corporation and/or its
+affiliates. Other names may be trademarks of their respective
+owners.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+mysql> show databases;
++--------------------+
+| Database           |
++--------------------+
+| information_schema |
+| mysql              |
+| performance_schema |
+| studentdb          |
+| sys                |
++--------------------+
+5 rows in set (0.09 sec)
+
+mysql> use studentdb;
+Reading table information for completion of table and column names
+You can turn off this feature to get a quicker startup with -A
+
+Database changed
+mysql> source exception_handling.sql
+ERROR: 
+Failed to open file 'exception_handling.sql', error: 2
+mysql> exit
+Bye
+Sanazs-MacBook-Pro:~ sanaz$ ls
+Applications		Documents		Library			Music			Public			eclipse-workspace
+Desktop			Downloads		Movies			Pictures		eclipse
+Sanazs-MacBook-Pro:~ sanaz$ cd documents
+Sanazs-MacBook-Pro:documents sanaz$ ls
+Jobs		UCSCExtension
+Sanazs-MacBook-Pro:documents sanaz$ cd UCSCExtension/
+Sanazs-MacBook-Pro:UCSCExtension sanaz$ ls
+Java for Beginners	MySQL
+Sanazs-MacBook-Pro:UCSCExtension sanaz$ cd MySQL/
+Sanazs-MacBook-Pro:MySQL sanaz$ /usr/local/mysql/bin/mysql -h localhost -u root -p
+Enter password: 
+Welcome to the MySQL monitor.  Commands end with ; or \g.
+Your MySQL connection id is 9
+Server version: 8.0.11 MySQL Community Server - GPL
+
+Copyright (c) 2000, 2018, Oracle and/or its affiliates. All rights reserved.
+
+Oracle is a registered trademark of Oracle Corporation and/or its
+affiliates. Other names may be trademarks of their respective
+owners.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+mysql> source exception_handling
+ERROR: 
+Failed to open file 'exception_handling', error: 2
+mysql> source exception_handling.sql
+ERROR 1046 (3D000): No database selected
+ERROR 1046 (3D000): No database selected
+mysql> use studentdb;
+Reading table information for completion of table and column names
+You can turn off this feature to get a quicker startup with -A
+
+Database changed
+mysql> source exception_handling.sql
+Query OK, 0 rows affected, 1 warning (0.01 sec)
+
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'in-student_id
+                      , 'testUser'
+                      , 'M'
+   ' at line 15
+mysql> source exception_handling.sql
+Query OK, 0 rows affected, 1 warning (0.00 sec)
+
+Query OK, 0 rows affected (0.06 sec)
+
+mysql> call exception_handling(6,3);
++----------------------------------------------------------------------------------------------------+
+| CONCAT ('User :', user(), 'is trying to insert student:' , in_student_id, ' that already exists.') |
++----------------------------------------------------------------------------------------------------+
+| User :root@localhostis trying to insert student:6 that already exists.                             |
++----------------------------------------------------------------------------------------------------+
+1 row in set (0.01 sec)
+
+Query OK, 0 rows affected (0.01 sec)
+
+mysql> source exception_handling.sql
+Query OK, 0 rows affected (0.09 sec)
+
+Query OK, 0 rows affected (0.01 sec)
+
+mysql> call exception_handling(6,3);
++------------------------------------------------------------------------+
+| Message                                                                |
++------------------------------------------------------------------------+
+| User :root@localhostis trying to insert student:6 that already exists. |
++------------------------------------------------------------------------+
+1 row in set (0.00 sec)
+
+Query OK, 0 rows affected (0.00 sec)
+
+mysql> source exception_handling.sql
+Query OK, 0 rows affected (0.09 sec)
+
+Query OK, 0 rows affected (0.00 sec)
+
+mysql> call exception_handling(6,3);
++------------------------------------------------------------------------+
+| Message                                                                |
++------------------------------------------------------------------------+
+| User :root@localhostis trying to insert student:6 that already exists. |
++------------------------------------------------------------------------+
+1 row in set (0.03 sec)
+
++-------------------------------------------------------------------------------------+
+| Message                                                                             |
++-------------------------------------------------------------------------------------+
+| User :root@localhostis trying to delete a parent entity:3 for which a child exists. |
++-------------------------------------------------------------------------------------+
+1 row in set (0.03 sec)
+
+Query OK, 0 rows affected (0.03 sec)
+
+mysql> call exception_handling(6,4);
++------------------------------------------------------------------------+
+| Message                                                                |
++------------------------------------------------------------------------+
+| User :root@localhostis trying to insert student:6 that already exists. |
++------------------------------------------------------------------------+
+1 row in set (0.04 sec)
+
++-------------------------------------------------------------------------------------+
+| Message                                                                             |
++-------------------------------------------------------------------------------------+
+| User :root@localhostis trying to delete a parent entity:4 for which a child exists. |
++-------------------------------------------------------------------------------------+
+1 row in set (0.04 sec)
+
+Query OK, 0 rows affected (0.04 sec)
+
+mysql> source exception_handling.sql
+Query OK, 0 rows affected (0.02 sec)
+
+Query OK, 0 rows affected (0.00 sec)
+
+mysql> call exception_handling(6,4);
++------------------------------------------------------------------------+
+| Message                                                                |
++------------------------------------------------------------------------+
+| User :root@localhostis trying to insert student:6 that already exists. |
++------------------------------------------------------------------------+
+1 row in set (0.07 sec)
+
++-------------------------------------------------------------------------------------+
+| Message                                                                             |
++-------------------------------------------------------------------------------------+
+| User :root@localhostis trying to delete a parent entity:4 for which a child exists. |
++-------------------------------------------------------------------------------------+
+1 row in set (0.07 sec)
+
+Query OK, 0 rows affected (0.07 sec)
+
+mysql> source exception_handling.sql
+Query OK, 0 rows affected (0.06 sec)
+
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'DECLARE CONTINUE HANDLER FOR 1451 SET foreign_key_failed = 888;
+    DELETE from ' at line 22
+mysql> source exception_handling.sql
+Query OK, 0 rows affected, 1 warning (0.00 sec)
+
+Query OK, 0 rows affected (0.10 sec)
+
+mysql> call exception_handling(6,4);
++------------------------------------------------------------------------+
+| Message                                                                |
++------------------------------------------------------------------------+
+| User :root@localhostis trying to insert student:6 that already exists. |
++------------------------------------------------------------------------+
+1 row in set (0.00 sec)
+
+Query OK, 0 rows affected (0.00 sec)
+
+mysql> call exception_handling(6,3);
++------------------------------------------------------------------------+
+| Message                                                                |
++------------------------------------------------------------------------+
+| User :root@localhostis trying to insert student:6 that already exists. |
++------------------------------------------------------------------------+
+1 row in set (0.00 sec)
+
+Query OK, 0 rows affected (0.00 sec)
+
+mysql> show variables like 'event_scheduler';
++-----------------+-------+
+| Variable_name   | Value |
++-----------------+-------+
+| event_scheduler | ON    |
++-----------------+-------+
+1 row in set (0.01 sec)
+
+mysql> 
+mysql> set global event_scheduler = 1;
+Query OK, 0 rows affected (0.00 sec)
+
+mysql> show variables like 'event_scheduler';
++-----------------+-------+
+| Variable_name   | Value |
++-----------------+-------+
+| event_scheduler | ON    |
++-----------------+-------+
+1 row in set (0.00 sec)
+
+mysql> source event_procedure.sql
+Query OK, 0 rows affected, 1 warning (0.01 sec)
+
+Query OK, 0 rows affected (0.03 sec)
+
+mysql> CREATE event insert_event ON SCHEDULE AT now() + interval 1 minute do call events_procedure();
+Query OK, 0 rows affected (0.02 sec)
+
+mysql> 
