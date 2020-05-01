@@ -90,16 +90,28 @@ LIMIT 300
 		store_status
 		FROM stores
 		ORDER BY name ASC
-		
+
 
 	/*Question 4: Show me a list of items, their product category
 	and bottle price with a 11% tax rate added on.
 	*Hint - use the PRODUCTS table*/
-
+	SELECT
+	item_no
+	,item_description
+	,bottle_price
+	,category_name
+	,bottle_price * 1.11 AS Bottle_Price_W/TAX
+	FROM
+	products
 
 	/*Question 5: Find the highest profit item.
 	*Hint - (Shelf Price - Bottle Price) = Profit*. Use PRODUCTS table*/
-
+	SELECT
+	item_description
+	,bottle_price
+	,category_name
+	,Shelf_Price
+	,(cast(Shelf_Price AS Money) - Bottle_Price)AS Profit
 
 ----------------------------------------------------------------
 --       INSTRUCTOR GUIDED:   FILTERS  - 30 Min.              --
