@@ -111,7 +111,7 @@ LIMIT 300
 	,bottle_price
 	,category_name
 	,Shelf_Price
-	,(cast(Shelf_Price AS Money) - Bottle_Price)AS Profit
+	,(cast(Shelf_Price AS Money) - Bottle_Price) AS Profit
 
 ----------------------------------------------------------------
 --       INSTRUCTOR GUIDED:   FILTERS  - 30 Min.              --
@@ -150,8 +150,8 @@ WHERE release_date BETWEEN '2011-01-01' AND '2011-12-31'
 -- Multiple Conditions, 1 Column Example: I want to see a list of Rock and Rap ALBUMs.
 
 SELECT
-ALBUM, genre, rating
-FROM ALBUMS
+album, genre, rating
+FROM albums
 --WHERE genre = 'Rock' OR genre = 'Rap'
 WHERE genre IN ('Rock', 'Rap') AND rating >= 2
 ORDER BY genre, rating -- can order by more than one column
@@ -159,15 +159,15 @@ ORDER BY genre, rating -- can order by more than one column
 -- Multiple Conditions, Multiple Columns Example: I want to see a list of Rock and Rap Albums with at least a 4 rating.
 
 SELECT
-ALBUM
-FROM ALBUMS
-WHERE
+album, genre, rating
+FROM albums
+WHERE genre IN ('Rock', 'Rap') AND rating >= 4
 
 -- NULL Conditions: I want to see a list of Albums with no ARTIST name.
 
 SELECT
-ALBUM, artist
-FROM ALBUMS
+album, artist
+FROM albums
 WHERE artist IS NULL
 
 -- OR Conditions: I want to see a list of Rock Albums with a rating of at least 4 or the album was burned.
