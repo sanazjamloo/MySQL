@@ -127,7 +127,7 @@ LIMIT 300
 -- 1 Condition, 1 Column: Text Example: I want to see a list of Rock Albums.
 
 SELECT
-ALBUM, genre
+album, genre
 FROM ALBUMS
 WHERE genre = 'Rock'
 
@@ -135,7 +135,7 @@ WHERE genre = 'Rock'
 -- 1 Condition, 1 Column: Integer Example: I want to see a list of Albums with over 1000 plays.
 
 SELECT
-ALBUM, plays
+album, plays
 FROM ALBUMS
 WHERE plays > 1000
 
