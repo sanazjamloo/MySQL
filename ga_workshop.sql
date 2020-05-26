@@ -239,10 +239,15 @@ OR album ILIKE '% the' -- end of the album name
 
 	-- Question 4: Give me a list of Peach Brandies that are in a 1000 ml bottle size or are over 70 proof. Remember, CONTAINED OR.
 
-		SELECT
-		*
-		FROM PRODUCTS
-		WHERE
+	SELECT
+	item_no
+	,category_name
+	,item_description
+	,bottle_size
+	,proof
+		FROM Products
+	 WHERE lower(item_description) LIKE '%peach%'
+		AND (Bottle_size = 1000 OR cast(proof AS INT)>70)
 
 	-- Question 5: Which items are Tequilas or Scotch Whiskies that have a case cost between $100 and $120?
 
