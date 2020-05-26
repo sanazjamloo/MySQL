@@ -142,7 +142,7 @@ WHERE plays > 1000
 -- 1 Condition, 1 Column: Date Example: I want to see a list of Albums released in 2011.
 
 SELECT
-ALBUM, release_date, TO_CHAR(release_date, 'MM') AS release_month
+album, release_date, TO_CHAR(release_date, 'MM') AS release_month
 FROM ALBUMS
 WHERE release_date BETWEEN '2011-01-01' AND '2011-12-31'
 -- WHERE TO_CHAR(release_date, 'YYYY') = '2011'. No Alias in WHERE clause.
@@ -187,7 +187,7 @@ WHERE genre = 'Rock' AND (rating >=4 OR burned = TRUE) -- All Rock or the other 
 -- LIKE is case sensitive.
 
 SELECT
-ALBUM
+album
 FROM ALBUMS
 --WHERE album ILIKE '%' -- will print out EVERYTHING/ any charachter % is a wildcard. Means anything.
 --WHERE album ILIKE 'f%' -- starts with f/F.
@@ -217,13 +217,16 @@ OR album ILIKE '% the' -- end of the album name
 		SELECT
 		*
 		FROM PRODUCTS
+		WHERE vendor = "305"
 
 	-- Question 2: Give me a distinct list of vendors that sell Flavored Rum.
 
-		SELECT
-		DISTINCT VENDOR
-		FROM PRODUCTS
-		WHERE
+	SELECT
+	DISTINCT VENDOR
+	,Vendor_name
+	,category_name
+	FROM PRODUCTS
+	WHERE UPPER(category_name) LIKE '%FLAVORED RUM%'
 
 	-- Question 3: Give me a distinct list of items and their respective list date, that were listed in Feburary 2015.
 
