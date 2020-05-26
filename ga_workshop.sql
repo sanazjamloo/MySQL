@@ -234,7 +234,7 @@ OR album ILIKE '% the' -- end of the album name
 		item_no
 		,list_date
 		FROM PRODUCTS
-		WHERE
+		WHERE to_char(list_date, 'MM-YYYY') = '02-2015'
 
 
 	-- Question 4: Give me a list of Peach Brandies that are in a 1000 ml bottle size or are over 70 proof. Remember, CONTAINED OR.
